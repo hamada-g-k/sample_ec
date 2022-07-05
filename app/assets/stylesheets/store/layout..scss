@@ -1,0 +1,89 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+div#wrapper {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100%;
+  margin: 0 auto;
+  padding-bottom: 48px;
+  background-color: #fff;
+}
+
+// ヘッダー
+
+header {
+  background-color: #000;
+  height: 60px;
+  .logo {
+    margin-left: 20px;
+    color: #fff;
+    font-size: 24px;
+    line-height: 60px;
+  }
+  .nav{
+    float: right;
+    li {
+      display: inline;
+      margin-right: 20px;
+    }
+  }
+  li a {
+    color: #fff;
+    padding: 15px;
+    &:hover {
+      border: 1px solid #fff;
+    }
+  }
+}
+
+// フッター
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #666666;
+  color: #eeeeee;
+  p {
+    text-align: center;
+  }
+}
+
+// レスポンシブ
+
+@media screen and (max-width: 1366px) {
+  // iPad Pro 12.9(横置き)
+
+}
+
+@media screen and (max-width: 428px) {
+  // iPhone 12 Pro(縦)
+  header{
+    height: 40px;
+    text-align: center;
+    .logo {
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      line-height: 40px;
+    }
+    .nav {
+      display: none;
+    }
+  }
+  footer {
+    display: none;
+  }
+}
