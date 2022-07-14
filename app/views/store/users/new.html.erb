@@ -3,6 +3,7 @@
 
 
 <%= form_with(model: @form, url: store_users_path, scope: :user, local: true) do |f| %>
+  <%= render 'store/shared/error_messages', object: @user %>
   <div class="generic-form">
     <%= render 'user_form', f: f %>
   </div>

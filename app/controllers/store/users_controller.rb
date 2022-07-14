@@ -24,14 +24,13 @@ class Store::UsersController < Store::Base
         :gender,
         :birthday,
         :password, :password_confirmation,
-        address_attributes: [ :id,
-                                :postal_code,
+        addresses_attributes: [ :postal_code,
                                 :preference,
                                 :city,
                                 :address1,
                                 :address2
                             ],
-        phone_attributes: [ :id, :number ]
+        phones_attributes: [ :number ]
       )
     end
 end
