@@ -1,0 +1,20 @@
+<% @title = 'メンバーログイン' %>
+
+<h1 class='heading'><%= @title %></h1>
+
+<div class="generic-form">
+  <%= form_with(model: @form, url: store_signup_path, scope: :session, local: true) do |f| %>
+
+    <div class="login-input-block">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.text_field :email, size: 32 %>
+    </div>
+
+    <div class="login-input-block">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, size: 32 %>
+    </div>
+
+    <%= f.submit "ログイン", class: 'btn' %>
+  <% end %>
+</div>

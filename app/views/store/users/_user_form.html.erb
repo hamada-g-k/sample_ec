@@ -1,0 +1,87 @@
+<div class="notes">
+  <span class="mark">*</span> 印の付いた項目は必須項目です
+</div>
+
+<div>
+  <%= f.label :email, 'メールアドレス', class: 'required' %>
+  <%= f.text_field :email, size: 32, required: true %>
+</div>
+
+<div>
+  <%= f.label :password, 'パスワード', class: 'required' %>
+  <%= f.password_field :password, size: 32, required: true %>
+</div>
+
+<div>
+  <%= f.label :password_confirmation, 'パスワード（確認）', class: 'required' %>
+  <%= f.password_field :password_confirmation, size: 32, required: true %>
+</div>
+
+<div>
+  <%= f.label :family_name, '氏名', class: 'required' %>
+  <%= f.text_field :family_name, required: true %>
+  <%= f.text_field :given_name, required: true %>
+</div>
+
+<div>
+  <%= f.label :family_name_kana, 'フリガナ', class: 'required' %>
+  <%= f.text_field :family_name_kana, required: true %>
+  <%= f.text_field :given_name_kana, required: true %>
+</div>
+
+<div>
+  <%= f.label :birthday, '生年月日', class: 'required' %>
+  <%= raw sprintf(
+            f.date_select(
+              :birthday,
+              use_month_numbers: true,
+              start_year: 1930,
+              end_year: (Time.now.year - 18),
+              default: Date.new(1989, 1, 1),
+              date_separator: '%s'),
+            '年 ', '月 ') + '日' %>
+</div>
+
+<div>
+  <%= f.label :gender, '性別', class: 'required' %>
+  <%= f.radio_button :gender, '男性' %>男性
+  <%= f.radio_button :gender, '女性' %>女性
+</div>
+
+<%= f.fields_for :phones do |ff| %>
+
+  <div>
+    <%= ff.label :number, '電話番号', class: 'required' %>
+    <%= ff.text_field :number, required: true %>
+  </div>
+
+<% end %>
+
+<%= f.fields_for :addresses do |ff| %>
+
+  <div>
+    <%= ff.label :postal_code, '郵便番号', class: 'required' %>
+    <%= ff.text_field :postal_code, size: 7 %>
+  </div>
+
+  <div>
+    <%= ff.label :prefecture, '都道府県', class: 'required' %>
+    <%= ff.select :prefecture, Address::PREFECTURE_NAMES %>
+  </div>
+
+  <div>
+    <%= ff.label :city, '市区町村', class: 'required' %>
+    <%= ff.text_field :city, required: true %>
+  </div>
+
+  <div>
+    <%= ff.label :address1, '町域、番地等', class: 'required' %>
+    <%= ff.text_field :address1, required: true %>
+  </div>
+
+  <div>
+    <%= ff.label :address2, '建物名、部屋番号等' %>
+    <%= ff.text_field :address2 %>
+  </div>
+
+<% end %>
