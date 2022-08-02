@@ -3,18 +3,26 @@
 <h1 class='heading'><%= @title %></h1>
 
 <div class="generic-form">
-  <%= form_with(model: @form, url: store_signup_path, scope: :session, local: true) do |f| %>
+  <%= form_with(url: store_sessions_path, scope: :session, local: true) do |f| %>
 
     <div class="login-input-block">
       <%= f.label :email, "メールアドレス" %>
-      <%= f.text_field :email, size: 32 %>
+      <%= f.text_field :email, size: 32, id: 'email-block' %>
     </div>
 
     <div class="login-input-block">
       <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password, size: 32 %>
+      <%= f.password_field :password, size: 32, id: 'password-block' %>
     </div>
 
     <%= f.submit "ログイン", class: 'btn' %>
   <% end %>
+  <button id="guest-login">ゲストログイン</button>
 </div>
+
+<script>
+  $("#guest-login").click(function() {
+    $("#email-block").val("test@example.com")
+    $("#password-block").val("password")
+  })
+</script>

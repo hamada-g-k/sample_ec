@@ -1,9 +1,7 @@
 <% @title = 'メンバー登録' %>
 <h1 class="heading"><%= @title %></h1>
 
-
-<%= form_with(model: @form, url: store_users_path, scope: :user, local: true) do |f| %>
-  <%= render 'store/shared/error_messages', object: @user %>
+<%= form_with(url: store_users_path, scope: :user, local: true) do |f| %>
   <div class="generic-form">
     <%= render 'user_form', f: f %>
   </div>

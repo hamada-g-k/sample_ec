@@ -9,4 +9,9 @@ Rails.application.routes.draw do
     resource :sessions, only: [ :create, :destroy ]
     resources :users
   end
+
+  namespace :admin do
+    root 'top#index'
+    get 'top' => 'top#index'
+  end
 end

@@ -48,20 +48,22 @@
   <%= f.radio_button :gender, 'female' %>女性
 </div>
 
-<%= f.fields_for :phones do |ff| %>
+<%= f.fields_for :phone_attributes do |ff| %>
 
   <div>
+    <%= ff.hidden_field :user_id %>
     <%= ff.label :number, '電話番号', class: 'required' %>
-    <%= ff.text_field :number, required: true %>
+    <%= ff.text_field :number, required: true, value: @user.phone.number %>
   </div>
 
 <% end %>
 
-<%= f.fields_for :addresses do |ff| %>
+<%= f.fields_for :address_attributes do |ff| %>
 
   <div>
+    <%= ff.hidden_field :user_id %>
     <%= ff.label :postal_code, '郵便番号', class: 'required' %>
-    <%= ff.text_field :postal_code, size: 7 %>
+    <%= ff.text_field :postal_code, size: 7, value: @user.address.    postal_code %>
   </div>
 
   <div>
@@ -71,17 +73,17 @@
 
   <div>
     <%= ff.label :city, '市区町村', class: 'required' %>
-    <%= ff.text_field :city, required: true %>
+    <%= ff.text_field :city, required: true, value: @user.address.city %>
   </div>
 
   <div>
     <%= ff.label :address1, '町域、番地等', class: 'required' %>
-    <%= ff.text_field :address1, required: true %>
+    <%= ff.text_field :address1, required: true, value: @user.address.address1 %>
   </div>
 
   <div>
     <%= ff.label :address2, '建物名、部屋番号等' %>
-    <%= ff.text_field :address2 %>
+    <%= ff.text_field :address2, value: @user.address.address2 %>
   </div>
 
 <% end %>

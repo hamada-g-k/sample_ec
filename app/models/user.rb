@@ -12,4 +12,9 @@ class User < ApplicationRecord
   validates :gender, inclusion: { in: %w(male female), allow_blank: true }
   has_secure_password
   validates :password_digest, presence: true, length: { minimum: 2 }
+
+  # 会員フルネーム
+  def full_name
+    self.family_name + ' ' + self.given_name
+  end
 end

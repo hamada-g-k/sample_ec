@@ -2,8 +2,13 @@
   <div>
     <%= link_to 'サンプルアプリ', :store_root, id: 'logo' %>
     <ul class="nav">
-      <li><%= link_to '新規登録', :store_signup %></li>
-      <li><%= link_to 'ログイン', :store_login %></li>
+      <% if logged_in? %>
+        <li><%= link_to current_user.full_name, store_user_url(current_user) %></li>
+        <li><%= link_to 'ログアウト', :store_logout, method: :delete %></li>
+      <% else %>
+        <li><%= link_to '新規登録', :store_signup %></li>
+        <li><%= link_to 'ログイン', :store_login %></li>
+      <% end %>
     </ul>
   </div>
 </header>

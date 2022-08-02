@@ -1,6 +1,8 @@
 class Store::UsersController < Store::Base
   def new
     @user = User.new
+    @user.build_address
+    @user.build_phone
   end
 
   def create
@@ -11,6 +13,10 @@ class Store::UsersController < Store::Base
     else
       render action: 'new'
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
 
@@ -24,13 +30,18 @@ class Store::UsersController < Store::Base
         :gender,
         :birthday,
         :password, :password_confirmation,
-        addresses_attributes: [ :postal_code,
-                                :preference,
+        address_attributes: [ :id,
+                                :postal_code,
+                                :prefecture,
                                 :city,
                                 :address1,
-                                :address2
+                                :address2,
+                                :user_id,
                             ],
-        phones_attributes: [ :number ]
+        phone_attributes: [ :id,
+                             :number,
+                             :user_id
+                           ]
       )
     end
 end
