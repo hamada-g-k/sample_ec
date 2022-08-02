@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'store/top#index'
+
   namespace :store do
     root 'top#index'
     get 'top' =>    'top#index'
